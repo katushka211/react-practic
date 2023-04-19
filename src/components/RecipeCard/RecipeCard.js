@@ -34,9 +34,15 @@ export const RecipeCard = ({
       <div>
         <h3>Difficulty</h3>
         <BadgeList>
-          <Badge active={difficulty === 'easy'}>Easy</Badge>
-          <Badge active={difficulty === 'medium'}>Medium</Badge>
-          <Badge active={difficulty === 'hard'}>Hard</Badge>
+          <Badge active={difficulty === 'easy'} type="easy">
+            Easy
+          </Badge>
+          <Badge active={difficulty === 'medium'} type="medium">
+            Medium
+          </Badge>
+          <Badge active={difficulty === 'hard'} type="hard">
+            Hard
+          </Badge>
         </BadgeList>
       </div>
     </div>
