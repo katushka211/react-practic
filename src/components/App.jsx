@@ -10,8 +10,11 @@ export class App extends Component {
   };
 
   deleteRecipe = recipeId => {
-    console.log(recipeId);
+    this.setState(prevState => ({
+      recipes: prevState.recipes.filter(recipe => recipe.id !== recipeId),
+    }));
   };
+
   render() {
     return (
       <Layout>
