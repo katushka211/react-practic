@@ -1,38 +1,44 @@
 import PropTypes from 'prop-types';
 import { TfiAlarmClock } from 'react-icons/tfi';
 import { AiOutlinePieChart, AiOutlineBarChart } from 'react-icons/ai';
+import { HiTrash, HiZoomIn } from 'react-icons/hi';
 import {
+  Container,
   InfoBlock,
-  RecipeInfo,
   Name,
+  Image,
+  Meta,
+  RecipeInfo,
   BadgeList,
   Badge,
+  Actions,
 } from './RecipeCard.styled';
 export const RecipeCard = ({
   item: { image, name, time, servings, calories, difficulty },
+  onDelete,
 }) => {
   console.log(difficulty);
   return (
-    <div>
-      <img src={image} alt={name} width="240" />
-      <Name>{name}</Name>
-      <RecipeInfo>
-        <InfoBlock>
-          <TfiAlarmClock size="24" />
-          <span>{time} min</span>
-        </InfoBlock>
-        <InfoBlock>
-          <AiOutlinePieChart size="24" />
-          <span>{servings} servings</span>
-        </InfoBlock>
-        <InfoBlock>
-          <AiOutlineBarChart size="24" />
-          <span>{calories} calories</span>
-        </InfoBlock>
-      </RecipeInfo>
+    <Container>
+      <Image src={image} alt={name} />
+      <Meta>
+        <Name>{name}</Name>
 
-      <div>
-        <h3>Difficulty</h3>
+        <RecipeInfo>
+          <InfoBlock>
+            <TfiAlarmClock size="24" />
+            <span>{time} min</span>
+          </InfoBlock>
+          <InfoBlock>
+            <AiOutlinePieChart size="24" />
+            <span>{servings} servings</span>
+          </InfoBlock>
+          <InfoBlock>
+            <AiOutlineBarChart size="24" />
+            <span>{calories} calories</span>
+          </InfoBlock>
+        </RecipeInfo>
+
         <BadgeList>
           <Badge active={difficulty === 'easy'} type="easy">
             Easy
@@ -44,8 +50,17 @@ export const RecipeCard = ({
             Hard
           </Badge>
         </BadgeList>
-      </div>
-    </div>
+
+        <Actions>
+          <button aria-label="Delete">
+            <HiTrash />
+          </button>
+          <button aria-label="Zoom">
+            <HiZoomIn />
+          </button>
+        </Actions>
+      </Meta>
+    </Container>
   );
 };
 

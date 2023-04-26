@@ -2,6 +2,13 @@ import styled from 'styled-components';
 
 export const List = styled.ul`
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+
+export const ListItem = styled.li`
+  width: 320px;
 `;
