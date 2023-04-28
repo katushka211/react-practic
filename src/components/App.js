@@ -16,10 +16,15 @@ export class App extends Component {
     }));
   };
 
+  addRecipe = newRecipe => {
+    this.setState(prevState => ({
+      recipes: [...prevState.recipes, newRecipe],
+    }));
+  };
   render() {
     return (
       <Layout>
-        <RecipeForm />
+        <RecipeForm onSave={this.addRecipe} />
         <RecipeList items={this.state.recipes} onDelete={this.deleteRecipe} />
         <GlobalStyle />
       </Layout>
