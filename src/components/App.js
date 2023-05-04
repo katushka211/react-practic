@@ -7,8 +7,25 @@ import { RecipeForm } from 'RecipeForm/RecipeForm';
 
 export class App extends Component {
   state = {
-    recipes: initialRecipes,
+    recipes: [],
   };
+
+  //render > didMount> getItem > setState > update > render >didUpdate > setItem
+
+  componentDidMount() {
+    const savedRecipes = localStorage.getItem('recipes');
+    if (savedRecipes !== null) {
+      this.setState({ recipes: JSON.parse(savedRecipes) });
+    } else {
+      this.setState({ recipes: initialRecipes });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.recipes !== this.state.recipes) {
+      localStorage.setItem('recipes', JSON.stringify(this.state.recipes));
+    }
+  }
 
   deleteRecipe = recipeId => {
     this.setState(prevState => ({
